@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  type: 
+  phase: 1
+  rate: 1.5
+  area: MyString
+
+two:
+  name: MyString
+  address: MyString
+  type: 
+  phase: 1
+  rate: 1.5
+  area: MyString

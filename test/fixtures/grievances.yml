@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  problem: MyString
+  description: MyString
+  remarks: MyString
+  status: MyString
+
+two:
+  problem: MyString
+  description: MyString
+  remarks: MyString
+  status: MyString

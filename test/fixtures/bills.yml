@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prev_reading: 1
+  curr_reading: 1
+  units: 1
+  amount: 1.5
+  status: MyString
+
+two:
+  prev_reading: 1
+  curr_reading: 1
+  units: 1
+  amount: 1.5
+  status: MyString
