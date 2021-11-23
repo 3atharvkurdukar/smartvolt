@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_131436) do
+ActiveRecord::Schema.define(version: 2021_11_23_153059) do
 
   create_table "bills", charset: "utf8", force: :cascade do |t|
     t.integer "prev_reading"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_131436) do
     t.bigint "official_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
     t.index ["connection_id"], name: "index_bills_on_connection_id"
     t.index ["official_id"], name: "index_bills_on_official_id"
   end
@@ -70,8 +71,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_131436) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bills", "connections"
-  add_foreign_key "bills", "officials"
   add_foreign_key "connections", "customers"
   add_foreign_key "grievances", "connections"
   add_foreign_key "grievances", "officials"

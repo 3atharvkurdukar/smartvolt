@@ -3,6 +3,7 @@ class CreateBills < ActiveRecord::Migration[6.1]
     create_table :bills do |t|
       t.integer :prev_reading
       t.integer :curr_reading
+      t.string :image_url
       t.integer :units
       t.float :amount
       t.string :status
