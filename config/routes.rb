@@ -14,4 +14,29 @@ Rails.application.routes.draw do
   get "/official/login", to: "official_sessions#new"
   post "/official/login", to: "official_sessions#create"
   get "/official/logout", to: "official_sessions#destroy"
+
+  get "/customer/dashboard", to: "customers#index"
+
+  get "/customer/connections", to: "customer_connections#index"
+  get "/customer/connections/new", to: "customer_connections#new"
+  post "/customer/connections/new", to: "customer_connections#create"
+  get "/customer/connections/:connection_id", to: "customer_connections#show"
+
+  get "/customer/connections/:connection_id/bills/new", to: "customer_connection_bills#new"
+  post "/customer/connections/:connection_id/bills/new", to: "customer_connection_bills#create"
+  get "/customer/connections/:connection_id/bills/:bill_id", to: "customer_connection_bills#show"
+
+  get "/customer/connections/:connection_id/grievances/new", to: "customer_connection_grievances#new"
+  post "/customer/connections/:connection_id/grievances/new", to: "customer_connection_grievances#create"
+  get "/customer/connections/:connection_id/grievances/:grievance_id", to: "customer_connection_grievances#show"
+
+  get "/official/dashboard", to: "officials#index"
+
+  get "/official/bills", to: "official_bills#index"
+  get "/official/bills/:bill_id", to: "official_bills#show"
+  patch "/official/bills/:bill_id", to: "official_bills#update"
+
+  get "/official/grievances", to: "official_grievances#index"
+  get "/official/grievances/:grievance_id", to: "official_grievances#show"
+  patch "/official/grievances/:grievance_id", to: "official_grievances#update"
 end
