@@ -8,7 +8,7 @@ class CustomerSessionsController < ApplicationController
     customer = Customer.find_by(username: params[:username])
     if customer.present? && customer.authenticate(params[:password])
       session[:customer_id] = customer.id
-      redirect_to root_path, flash: { info: "Signed in successfully!" }
+      redirect_to customer_dashboard_path, flash: { info: "Signed in successfully!" }
     else
       flash[:danger] = "Invalid username or password"
       render :new

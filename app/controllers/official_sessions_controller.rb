@@ -8,7 +8,7 @@ class OfficialSessionsController < ApplicationController
     official = Official.find_by(username: params[:username])
     if official.present? && official.authenticate(params[:password])
       session[:official_id] = official.id
-      redirect_to root_path, flash: { success: "Signed in successfully!" }
+      redirect_to official_dashboard_path, flash: { info: "Signed in successfully!" }
     else
       flash[:danger] = "Invalid username or password"
       render :new

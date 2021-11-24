@@ -9,7 +9,7 @@ class OfficialRegistrationsController < ApplicationController
     @official = Official.new(user_params)
     if @official.save
       session[:user_id] = @official.id
-      redirect_to root_path, flash: { success: "Account created successfully" }
+      redirect_to official_dashboard_path, flash: { success: "Account created successfully" }
     else
       render :new
     end

@@ -9,7 +9,7 @@ class CustomerRegistrationsController < ApplicationController
     @customer = Customer.new(user_params)
     if @customer.save
       session[:user_id] = @customer.id
-      redirect_to root_path, flash: { info: "Account created successfully" }
+      redirect_to customer_dashboard_path, flash: { success: "Account created successfully" }
     else
       render :new
     end
