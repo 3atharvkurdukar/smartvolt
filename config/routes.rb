@@ -7,4 +7,11 @@ Rails.application.routes.draw do
   get "/customer/login", to: "customer_sessions#new"
   post "/customer/login", to: "customer_sessions#create"
   get "/customer/logout", to: "customer_sessions#destroy"
+
+  get "/official/register", to: "official_registrations#new"
+  post "/official/register", to: "official_registrations#create"
+
+  get "/official/login", to: "official_sessions#new"
+  post "/official/login", to: "official_sessions#create"
+  get "/official/logout", to: "official_sessions#destroy"
 end
