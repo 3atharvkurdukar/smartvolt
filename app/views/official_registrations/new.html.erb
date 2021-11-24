@@ -1,0 +1,38 @@
+<div>
+  <p class="text-center">Create your Smartvolt official account</p>
+  <%= form_with model: @official, url: official_register_path do |form| %>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <% form.object.errors.full_messages.each do |msg| %>
+          <div><%= msg %></div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :name, "Full Name", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :username, "Username", class: "form-label" %>
+      <%= form.text_field :username, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :password_confirmation, "Confirm Password" %>
+      <%= form.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :area, "Area", class: "form-label" %>
+      <%= form.select :area, ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5"], {}, { class: "form-select" } %>
+    </div>
+    <div class="d-flex justify-content-center">
+        <%= form.submit "Register", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <p class="mt-3 text-center">
+    Already have an Account? <%= link_to "Log In", official_login_path %>
+  </p>
+</div>
