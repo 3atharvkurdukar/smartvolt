@@ -8,7 +8,7 @@ class OfficialRegistrationsController < ApplicationController
   def create
     @official = Official.new(user_params)
     if @official.save
-      session[:user_id] = @official.id
+      session[:official_id] = @official.id
       redirect_to official_dashboard_path, flash: { success: "Account created successfully" }
     else
       render :new

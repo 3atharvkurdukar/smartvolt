@@ -17,18 +17,25 @@
     <main class="main-content">
       <div class="position-relative">
         <%= render partial: "shared/navbar_customer" %>
+        <div class="iq-navbar-header" style="height: 215px;">
+          <div class="container-fluid iq-container">
+            <%= render partial: "shared/flash" %>
+          </div>
+          <div class="iq-header-img">
+            <%= image_tag "top-header.png", class: "theme-color-default-img img-fluid w-100 h-100 animated-scaleX" %>
+          </div>
+        </div>
       </div>
       <div class="container-fluid content-inner mt-n5 py-0">
-        <%= render partial: "shared/flash" %>
         <%= yield %>
       </div>
     </main>
     <footer class="bg-white mt-4">
     </footer>
     <script>
-      const sidebarToggle = (elem) => {
+      var sidebarToggle = (elem) => {
         elem.addEventListener('click', (e) => {
-          const sidebar = document.querySelector('.sidebar')
+          var sidebar = document.querySelector('.sidebar')
           if (sidebar.classList.contains('sidebar-mini')) {
             sidebar.classList.remove('sidebar-mini')
           } else {
@@ -37,15 +44,15 @@
         })
       }
 
-      const sidebarToggleBtn = document.querySelectorAll('[data-toggle="sidebar"]')
-      const sidebar = document.querySelector('.sidebar-default')
+      var sidebarToggleBtn = document.querySelectorAll('[data-toggle="sidebar"]')
+      var sidebar = document.querySelector('.sidebar-default')
       if (sidebar !== null) {
-        const sidebarActiveItem = sidebar.querySelectorAll('.active')
+        var sidebarActiveItem = sidebar.querySelectorAll('.active')
         Array.from(sidebarActiveItem, (elem) => {
           if (!elem.closest('ul').classList.contains('iq-main-menu')) {
-            const childMenu = elem.closest('ul')
+            var childMenu = elem.closest('ul')
             childMenu.classList.add('show')
-            const parentMenu = childMenu.closest('li').querySelector('.nav-link')
+            var parentMenu = childMenu.closest('li').querySelector('.nav-link')
             parentMenu.classList.add('collapsed')
             parentMenu.setAttribute('aria-expanded', true)
           }
