@@ -1,0 +1,28 @@
+<nav class="nav navbar navbar-expand navbar-light iq-navbar">
+  <div class="container-fluid navbar-inner">
+    <a class="navbar-brand" href="<%= official_dashboard_path %>"><%= image_tag "logo-full.svg", height: "24" %></a>
+    <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
+        <i class="icon">
+          <svg width="20px" height="20px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+          </svg>
+        </i>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag "avatar.png", alt: "User-Profile", class: "theme-color-default-img img-fluid avatar avatar-50 avatar-rounded" %>
+            <div class="caption ms-3 d-none d-md-block ">
+                <h6 class="mb-0 caption-title"><%= Current.official.name %></h6>
+                <p class="mb-0 caption-sub-title">Official</p>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<%= official_logout_path %>">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
