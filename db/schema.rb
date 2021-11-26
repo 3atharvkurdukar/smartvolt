@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_153059) do
+ActiveRecord::Schema.define(version: 2021_11_26_150216) do
 
   create_table "bills", charset: "utf8", force: :cascade do |t|
     t.integer "prev_reading"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_153059) do
   create_table "connections", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "type"
+    t.string "connection_type"
     t.integer "phase"
     t.float "rate"
     t.string "area"
