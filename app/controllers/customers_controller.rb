@@ -4,5 +4,7 @@ class CustomersController < ApplicationController
   layout "customer"
 
   def index
+    @connections = Connection.where(customer: Current.customer.id).order(name: :asc)
+    @bills = Bill.joins(:connection).where(connection: { customer: Current.customer.id }).order(created_at: :desc)
   end
 end
