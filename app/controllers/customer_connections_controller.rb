@@ -2,16 +2,14 @@ class CustomerConnectionsController < ApplicationController
     before_action :require_customer_signed_in
     layout "customer"
     def index
-        @customer = Current.customer
+        
     end
     def new
-        @customer = Current.customer
+        
       end
     
     def create
-        @customer = Current.customer
-        @connection = @customer.connections.create(connection_params)
-        @connection.save
+        @connection = Current.customer.connections.create(connection_params)
         if @connection.connection_type == "Domestic"
             @connection.rate = 5
         end
