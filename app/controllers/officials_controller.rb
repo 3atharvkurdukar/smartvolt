@@ -4,5 +4,6 @@ class OfficialsController < ApplicationController
   layout "official"
 
   def index
+    @customers = Customer.all
   end
 end
