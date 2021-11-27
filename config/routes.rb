@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post "/customer/connections/:connection_id/bills/new", to: "customer_connection_bills#create"
   get "/customer/connections/:connection_id/bills/:bill_id", to: "customer_connection_bills#show"
 
-  get "/customer/connections/:connection_id/grievances/new", to: "customer_connection_grievances#new"
+  get "/customer/connections/:connection_id/grievances/new", to: "customer_connection_grievances#new", as: "customer_connection_grievances_new"
   post "/customer/connections/:connection_id/grievances/new", to: "customer_connection_grievances#create"
   get "/customer/connections/:connection_id/grievances/:grievance_id", to: "customer_connection_grievances#show"
 

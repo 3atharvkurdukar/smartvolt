@@ -1,9 +1,6 @@
 class CustomerConnectionsController < ApplicationController
     before_action :require_customer_signed_in
     layout "customer"
-    def index
-        
-    end
     def new
         
       end
