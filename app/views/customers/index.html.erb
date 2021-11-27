@@ -39,12 +39,12 @@
     <% if @bills.length > 0 %>
       <table class="table table-striped">
         <tr>
-          <th scope="col">Connection<th>
-          <th scope="col">Date<th>
-          <th scope="col">Units<th>
-          <th scope="col">Amount<th>
-          <th scope="col">Status<th>
-        <tr>
+          <th scope="col">Connection</th>
+          <th scope="col">Date</th>
+          <th scope="col">Units</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+        </tr>
         <% @bills.each do |bill| %>
           <tr>
             <td><%= @bill.connection.name %></td>
