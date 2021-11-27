@@ -20,8 +20,16 @@
       <div class="position-relative">
         <%= render partial: "shared/navbar_official" %>
       </div>
+      <div class="iq-navbar-header" style="height: 215px;">
+          <div class="container-fluid iq-container">
+            <%= render partial: "shared/flash" %>
+          </div>
+          <div class="iq-header-img">
+            <%= image_tag "top-header.png", class: "theme-color-default-img img-fluid w-100 h-100 animated-scaleX" %>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid content-inner mt-n5 py-0">
-        <%= render partial: "shared/flash" %>
         <%= yield %>
       </div>
     </main>
