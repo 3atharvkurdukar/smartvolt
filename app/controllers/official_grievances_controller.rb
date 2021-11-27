@@ -5,10 +5,22 @@ class OfficialGrievancesController < ApplicationController
     layout "official"
   
     def index
-        @customers = Customer.all
-        @official=Official.all
+        @grievances=Grievance.where(official_id: Current.official.id)
     end
 
+   def show
 
+
+    
+    @grievance = Grievance.find(params[:grievance_id])
+
+    
+
+   end
+
+
+   private
+
+  
 
 end
