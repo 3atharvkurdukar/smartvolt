@@ -10,11 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_26_133215) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_26_150216) do
->>>>>>> new_connection
+ActiveRecord::Schema.define(version: 2021_11_27_152354) do
+
+  create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "bills", charset: "utf8", force: :cascade do |t|
     t.integer "prev_reading"
@@ -26,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_11_26_150216) do
     t.bigint "official_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image_url"
     t.index ["connection_id"], name: "index_bills_on_connection_id"
     t.index ["official_id"], name: "index_bills_on_official_id"
   end
@@ -34,11 +57,7 @@ ActiveRecord::Schema.define(version: 2021_11_26_150216) do
   create_table "connections", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "address"
-<<<<<<< HEAD
-    t.string "conn_type"
-=======
     t.string "connection_type"
->>>>>>> new_connection
     t.integer "phase"
     t.float "rate"
     t.string "area"
@@ -79,6 +98,8 @@ ActiveRecord::Schema.define(version: 2021_11_26_150216) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "connections", "customers"
   add_foreign_key "grievances", "connections"
   add_foreign_key "grievances", "officials"
