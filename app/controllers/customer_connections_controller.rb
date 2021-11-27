@@ -3,6 +3,7 @@ class CustomerConnectionsController < ApplicationController
   layout "customer"
 
   def index
+    @connections = Connection.where(customer: Current.customer.id).order(name: :asc)
   end
 
   def new

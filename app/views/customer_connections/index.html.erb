@@ -1,0 +1,33 @@
+<div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <h4 class="card-title">Connections</h4>
+    <a href="<%= customer_connections_new_path %>" class="btn btn-primary btn-sm">
+      <i class="icon">
+        <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.8388 2.69682H21.2848V1.17751C21.2848 0.528873 20.7646 0 20.1237 0C19.4841 0 18.9625 0.528873 18.9625 1.17751V2.69682H17.4112C16.7702 2.69682 16.25 3.22569 16.25 3.87435C16.25 4.5229 16.7702 5.05184 17.4112 5.05184H18.9625V6.57252C18.9625 7.22119 19.4841 7.75 20.1237 7.75C20.7646 7.75 21.2848 7.22119 21.2848 6.57252V5.05184H22.8388C23.4784 5.05184 24 4.5229 24 3.87435C24 3.22569 23.4784 2.69682 22.8388 2.69682Z" fill="currentColor"/>
+          <path d="M8.76283 4.68914C8.47913 4.74133 8.18478 4.79569 7.89106 4.92937C7.18839 5.29356 6.75001 6.30245 6.75001 7.38404C6.74875 7.98743 6.95792 8.7506 7.1696 9.18323L8.8599 12.7696V14.647C8.8599 16.0287 9.45923 17.1397 10.3241 17.3495C11.1545 17.5278 12.7221 17.5713 13.6358 17.3495C14.5495 17.1571 15.1401 16.0961 15.1401 14.647V12.7696L16.8554 9.11365C17.039 8.73859 17.2494 8.07659 17.2494 7.46781C17.25 7.42867 17.25 7.39388 17.25 7.35909C17.25 6.25679 16.7953 5.286 16.0945 4.92181C15.7964 4.78378 15.5171 4.73594 15.2472 4.68914L14.9798 4.64026C14.1124 4.45325 9.88196 4.45325 9.02085 4.64026L8.76283 4.68914Z" fill="currentColor"/>
+          <path opacity="0.4" d="M15 1.18065V6.31935C15 6.55707 14.552 6.75 14 6.75C13.448 6.75 13 6.55707 13 6.31935V1.18065C13 0.942929 13.448 0.75 14 0.75C14.552 0.75 15 0.942929 15 1.18065Z" fill="currentColor"/>
+          <path opacity="0.4" d="M11 1.18065V6.31935C11 6.55707 10.552 6.75 10 6.75C9.448 6.75 9 6.55707 9 6.31935V1.18065C9 0.942929 9.448 0.75 10 0.75C10.552 0.75 11 0.942929 11 1.18065Z" fill="currentColor"/>
+          <path opacity="0.4" d="M13 18.3948V23.1052C13 23.3231 12.552 23.5 12 23.5C11.448 23.5 11 23.3231 11 23.1052V18.3948C11 18.1769 11.448 18 12 18C12.552 18 13 18.1769 13 18.3948Z" fill="currentColor"/>
+        </svg>
+      </i>
+      <span class="ms-2">New Connection</span>
+    </a>
+  </div>
+  <div class="card-body">
+    <% if @connections.length > 0 %>
+      <div class="list-group list-group-flush">
+        <% @connections.each do |connection| %>
+          <a href="<%= customer_connection_path(connection.id) %>" class="list-group-item list-group-item-action mx-0">
+            <h5><%= connection.name %></h5>
+            <p class="text-muted"><%= connection.address %></p>
+          </a>
+        <% end %>
+      </div>
+    <% else %>
+      <diV class="my-4 d-flex align-items-center justify-content-center">
+        <h5 class="text-muted text-center">No connections found. Try creating one!</h5>
+      </div>
+    <% end %>
+  </div>
+</div>
