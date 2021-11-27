@@ -18,7 +18,7 @@
     <% if @connections.length > 0 %>
       <div class="list-group list-group-flush">
         <% @connections.each do |connection| %>
-          <a href="<%= customer_connections_path + "/" + connection.id.to_s %>" class="list-group-item list-group-item-action mx-0">
+          <a href="<%= customer_connection_path(connection.id) %>" class="list-group-item list-group-item-action mx-0">
             <h5><%= connection.name %></h5>
             <p class="text-muted"><%= connection.address %></p>
           </a>
