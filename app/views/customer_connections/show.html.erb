@@ -69,18 +69,18 @@
         </thead>
         <tbody>
           <% @bills.each do |bill| %>
-            <tr>
-              <td><%= @bill.connection.name %></td>
-              <td><%= @bill.created_at %></td>
-              <td><%= @bill.units %></td>
-              <td><%= @bill.amount %></td>
-              <td><%= @bill.status %></td>
+            <tr style="cursor: pointer;" onclick="location.href='<%= customer_connection_bill_path(@connection, bill) %>'">
+              <td><%= bill.connection.name %></td>
+              <td><%= bill.created_at.localtime.to_formatted_s(:long) %></td>
+              <td><%= bill.units || "N/A" %></td>
+              <td><%= bill.amount || "N/A" %></td>
+              <td><%= bill.status %></td>
             </tr>
           <% end %>
         </tbody>
-      </div>
+      </table>
     <% else %>
-      <diV class="my-4 d-flex align-items-center justify-content-center">
+      <div class="my-4 d-flex align-items-center justify-content-center">
         <h5 class="text-muted text-center">No bills generated yet!</h5>
       </div>
     <% end %>
@@ -108,7 +108,7 @@
           </thead>
           <tbody>
             <% @grievances.each do |grievance| %>
-              <tr onclick="location.href='<%= customer_connection_grievance_path(@connection, grievance) %>'">
+              <tr style="cursor: pointer;" onclick="location.href='<%= customer_connection_grievance_path(@connection, grievance) %>'">
                 <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
                 <td><%= grievance.problem %></td>
                 <td><%= grievance.connection.name %></td>
