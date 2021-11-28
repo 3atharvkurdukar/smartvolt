@@ -5,8 +5,7 @@ class OfficialBillsController < ApplicationController
     layout "official"
   
     def index
-        @customers = Customer.all
-        @official=Official.all
+        @bills=Bill.all
     end
 
 

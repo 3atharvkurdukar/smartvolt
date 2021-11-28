@@ -1,60 +1,33 @@
-<div class="col-md-12 col-lg-12">
-      
-         
-               
-         <div class="col-md-12 col-lg-12">
-            <div class="overflow-hidden card aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">
-               <div class="flex-wrap card-header d-flex justify-content-between">
-                  <div class="header-title">
-                     <h4 class="mb-2 card-title">Grievances</h4>
-               
-                  </div>
-                  
-               </div>
-               <div class="p-0 card-body">
-                  <div class="mt-4 table-responsive">
-                     <table id="basic-table" class="table mb-0 table-striped" role="grid">
-                        <thead>
-                           <tr>
-                              <th>CONNECTION</th>
-                              <th>DATE</th>
-                              <th>PROBLEM</th>
-                              <th>STATUS</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                          
-                           <% @customers.each do |customers| %>
-                           
-                           
-                           <tr onclick="location.href='<%= official_dashboard_path %>';" onmouseover="this.style.cursor='pointer';">
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                   
-                                    <h6><%= customers.name%></h6>
-                                 </div>
-                              </td>
-                              <td>
-                              <%= customers.created_at.to_date%>
-                               
-                              </td>
-                              <td><%= customers.mobileno%></td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6> <%= @official[1].area%></h6>
-                                 </div>
-                                
-                                 
-                              </td>
-                           </tr>
-                           
-                           <% end %>
-                           
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
-         </div>
-      
-    </div>
+<div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
+  <div class="card-header">
+    <h4 class="card-title">Grievances</h4>
+  </div>
+  <div class="card-body">
+    <% if @grievances.length > 0 %>
+      <table class="table table-striped table-hover table responsive">
+       <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Problem</th>
+          <th scope="col">Connection</th>
+          <th scope="col">Updated</th>
+          <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <% @grievances.each do |grievance| %>
+          <tr onclick="location.href='<%=grievance.status == 'Resolved' ? official_grievance_path(grievance.id) :official_grievance_edit_path(grievance.id) %>';" onmouseover="this.style.cursor='pointer';">
+            <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
+            <td><%= grievance.problem %></td>
+            <td><%= grievance.connection.name %></td>
+            <td><%= grievance.updated_at.strftime("%b %d, %Y") %></td>
+            <td><%= grievance.status %></td>
+          </tr>
+        <% end %>
+      </div>
+    <% else %>
+      <diV class="my-4 d-flex align-items-center justify-content-center">
+        <h5 class="text-muted text-center">Wow, no complaints so far!</h5>
+      </div>
+    <% end %>
+  </div>
+</div>

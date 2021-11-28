@@ -47,11 +47,11 @@
         </tr>
         <% @bills.each do |bill| %>
           <tr>
-            <td><%= @bill.connection.name %></td>
-            <td><%= @bill.created_at %></td>
-            <td><%= @bill.units %></td>
-            <td><%= @bill.amount %></td>
-            <td><%= @bill.status %></td>
+            <td><%= bill.connection.name %></td>
+            <td><%= bill.created_at %></td>
+            <td><%= bill.units %></td>
+            <td><%= bill.amount %></td>
+            <td><%= bill.status %></td>
           </tr>
         <% end %>
       </div>

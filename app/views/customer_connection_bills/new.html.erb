@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="card-body">
-        <%= form_with model: @bill, url: customer_connection_bills_new_path do |form| %>
+        <%= form_with url: customer_connection_bills_new_path do |form| %>
           <% if @bill.image.attached? %>
             <div class="container px-4 py-3">
               <%= image_tag @bill.image, class: "img-responsive" %>
@@ -16,6 +16,10 @@
           <div class="form-group">
             <%= form.label :image %>
             <%= form.file_field :image, accept: "image/*", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= form.label :otp, "OTP" %>
+            <%= form.text_field :otp, class: "form-control", minlength: 6, maxlength: 6 %>
           </div>
           <div class="d-flex justify-content-center">
             <%= form.submit "Submit", class: "btn btn-primary" %>

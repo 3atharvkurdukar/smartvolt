@@ -4,6 +4,7 @@ class OfficialsController < ApplicationController
   layout "official"
 
   def index
-    @customers = Customer.all
+    @bills=Bill.all
+    @grievances=Grievance.where(official_id: Current.official.id)
   end
 end

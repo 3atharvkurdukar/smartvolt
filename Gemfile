@@ -53,3 +53,7 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "figaro", "~> 1.2"
+
+gem "twilio-ruby", "~> 5.61"
+
+gem "active_storage_validations", "~> 0.9.6"
