@@ -38,5 +38,6 @@ Rails.application.routes.draw do
 
   get "/official/grievances", to: "official_grievances#index", as: "official_grievances"
   get "/official/grievances/:grievance_id", to: "official_grievances#show", as: "official_grievance"
-  patch "/official/grievances/:grievance_id", to: "official_grievances#update"
+  get "/official/grievances/:grievance_id/edit", to:"official_grievances#edit" ,as: "official_grievance_edit"
+  patch "/official/grievances/:grievance_id", to: "official_grievances#update" , as: "official_grievance_patch"
 end
