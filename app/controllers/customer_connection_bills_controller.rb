@@ -29,5 +29,7 @@ class CustomerConnectionBillsController < ApplicationController
   end
 
   def show
+    connection = Current.customer.connections.find(params[:connection_id])
+    @bill = connection.bills.find(params[:bill_id])
   end
 end
