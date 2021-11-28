@@ -57,3 +57,5 @@ gem "figaro", "~> 1.2"
 gem "twilio-ruby", "~> 5.61"
 
 gem "active_storage_validations", "~> 0.9.6"
+
+gem "aws-sdk-s3", "~> 1.107"
