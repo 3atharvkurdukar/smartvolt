@@ -1,40 +1,43 @@
-<div class="row">
-  <div class="col">
-    <div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
-      <div class="card-header">
-        <h4 class="card-title">Bill Details</h4>
+<div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
+  <div class="card-header">
+    <h4 class="card-title">Bill Details</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-7 col-lg-8">
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Billing Date</label>
+          <p class="text-dark"><%= @bill.created_at.to_date %></p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Previous Reading</label>
+          <p class="text-dark"><%= @bill.prev_reading %></p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Current Reading</label>
+          <p class="text-dark"><%= @bill.curr_reading || "N/A" %></p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Unit Consumption</label>
+          <p class="text-dark"><%= @bill.units || "N/A" %></p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Consumption Rate</label>
+          <p class="text-dark">₹<%= @bill.connection.rate %>/unit</p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Payable Amount</label>
+          <p class="text-dark"><%= @bill.amount || "N/A" %></p>
+        </div>
+        <div class="mb-3">
+          <label class="text-muted fw-bold">Status</label>
+          <p class="text-dark"><%= @bill.status || "N/A" %></p>
+        </div>
       </div>
-      <div class="card-body">
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Meter Reading</label>
-        <p class="text-dark"><%= image_tag @bill.image %></p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Billing Date</label>
-        <p class="text-dark"><%= @bill.updated_at.to_date %></p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Previous Reading</label>
-        <p class="text-dark"><%= @bill.prev_reading %></p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Current Reading</label>
-        <p class="text-dark"><%= @bill.curr_reading %></p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Unit Consumption</label>
-        <p class="text-dark"><%= @bill.units %></p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Consumption Rate</label>
-        <p class="text-dark">₹<%= connection.rate %>/unit</p>
-      </div>
-      <div class="mb-3">
-        <label class="text-muted fw-bold">Payable Amount</label>
-        <p class="text-dark"><%= @bill.amount %></p>
-      </div>
+      <div class="col-md-5 col-lg-4">
+        <%= image_tag @bill.image, class: "img-thumbnail" %>
       </div>
     </div>
   </div>
-  </div>
+</div>
 </div>
