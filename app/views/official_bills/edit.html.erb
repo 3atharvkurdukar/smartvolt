@@ -1,39 +1,13 @@
-<script>
-    
-        function printDiv() {
-            var divContents = document.getElementById("GFG").innerHTML;
-            var a = window.open();
-            a.document.write('<html>');
-
-            a.document.write('<body style="width: 21cm; height:30cm;"> <h3>');
-            a.document.write('<%= image_tag "logo-full.svg", height: "24" %>');
-            a.document.write('<div  class="container"> ');
-           
-            a.document.write(divContents);
-            a.document.write('</body></html>');
-            a.document.close();
-            a.print();
-            a.window.close();
-        }
-
-
-</script>
-
-
-
-
-
-<div id="GFG" class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
-
+<div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
   <div class="card-header">
     <h4 class="card-title">Bill Details</h4>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-7 col-lg-8">
-       <div class="mb-3">
+        <div class="mb-3">
           <label class="text-muted fw-bold">Connection Details</label>
-          <p class="text-dark"><%= @bill.connection.name %> ( <%= @bill.connection.phase %> Phase,  <%= @bill.connection.connection_type %> )</p>
+          <p class="text-dark"><%= @bill.connection.name %> ( <%= @bill.connection.phase %> Phase,  <%= @bill.connection.connection_type %>)</p>
         </div>
         <div class="mb-3">
           <label class="text-muted fw-bold">Billing Date</label>
@@ -57,7 +31,7 @@
         </div>
         <div class="mb-3">
           <label class="text-muted fw-bold">Payable Amount</label>
-          <p class="text-dark"><%= number_to_currency(@bill.amount, unit:"₹") || "N/A" %></p>
+          <p class="text-dark"><%= @bill.amount || "N/A" %></p>
         </div>
         <div class="mb-3">
           <label class="text-muted fw-bold">Status</label>
@@ -68,15 +42,28 @@
         <%= image_tag @bill.image, class: "img-thumbnail" %>
       </div>
     </div>
-    
- 
   </div>
 </div>
 
 
-
-<div class="card-header">
-<div class="d-flex justify-content-center">
- <input type="button" onclick="printDiv()" value="Print Bill" class="btn btn-primary" />
+<div class="row justify-content-center">
+  <div >
+    <div class="card">
+      
+      <div class="card-body">
+        <%= form_with model:@bill ,url: official_bill_patch_path do |form| %>
+          <div class="form-group">
+          <div class="text-dark">
+            <%= form.label :Current_Reading %>
+            <%= form.number_field :curr_reading, class: "form-control" %>
+          </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= form.submit "Generate Bill", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 </div>

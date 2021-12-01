@@ -33,11 +33,11 @@ class CustomerConnectionsController < ApplicationController
     if !@connection.present?
       redirect_to customer_dashboard_path, flash: { danger: "Invalid connection ID" }
     end
-    @last_bill = Bill.order(created_at: :desc).first
+    @last_bill = Bill.where(connection_id: @connection.id).order(created_at: :desc).first
     @show_upload_link = !@last_bill.present? || @last_bill.created_at.to_date <= 1.month.ago.to_date
-
-    @bills = Bill.where(connection: params[:connection_id])
-    @grievances = Grievance.where(connection: params[:connection_id])
+  
+    @bills = Bill.where(connection: params[:connection_id]).order(created_at: :desc)
+    @grievances = Grievance.where(connection: params[:connection_id]).order(created_at: :desc)
   end
 
   private

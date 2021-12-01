@@ -15,7 +15,7 @@
           <th scope="col">Status</th>
         <tr>
         <% @bills.each do |bill| %>
-          <tr onclick="location.href='<%= official_dashboard_path %>';" onmouseover="this.style.cursor='pointer';">
+         <tr style="cursor: pointer;" onclick="location.href='<%=bill.status == 'Bill Generated' ? official_bill_path(bill.id) : official_bill_edit_path(bill.id) %>';">
             <td><%= bill.connection.name %></td>
             <td><%= bill.created_at.strftime("%b %d, %Y") %></td>
             <td><%= bill.units %></td>

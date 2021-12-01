@@ -46,7 +46,7 @@
           <th scope="col">Status</th>
         </tr>
         <% @bills.each do |bill| %>
-          <tr>
+          <tr style="cursor: pointer;" onclick="location.href='<%= customer_connection_bill_path(bill.connection.id, bill.id) %>'">
             <td><%= bill.connection.name %></td>
             <td><%= bill.created_at %></td>
             <td><%= bill.units %></td>

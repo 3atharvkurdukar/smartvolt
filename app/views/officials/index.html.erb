@@ -1,3 +1,4 @@
+
 <div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
   <div class="card-header">
     <h4 class="card-title">Recent Bills</h4>
@@ -5,26 +6,35 @@
   <div class="card-body">
     <% if @bills.length > 0 %>
       <table class="table table-striped table-hover table responsive">
-        <tr>
-          <th scope="col">Connection</th>
-          <th scope="col">Date</th>
-          <th scope="col">Units</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Status</th>
-        </tr>
-        <% @bills.each do |bill| %>
-          <tr onclick="location.href='<%= official_dashboard_path %>';" onmouseover="this.style.cursor='pointer';">
-            <td><%= bill.connection.name %></td>
-            <td><%= bill.created_at.strftime("%b %d, %Y") %></td>
-            <td><%= bill.units %></td>
-            <td><%= bill.amount %></td>
-            <td><%= bill.status %></td>
+        <thead>
+          <tr>
+            <th scope="col">Connection</th>
+            <th scope="col">Date</th>
+            <th scope="col">Units</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status</th>
           </tr>
-        <% end %>
-      </div>
+        </thead>
+        <tbody>
+          <% @bills.each do |bill| %>
+             <% if bill.status != "Bill Generated" %>
+                             <tr style="cursor: pointer;" onclick="location.href='<%=bill.status == 'Bill Generated' ? official_bill_path(bill.id) : official_bill_edit_path(bill.id) %>';">
+                                 <td><%= bill.connection.name %></td>
+                                 <td><%= bill.created_at.localtime.to_formatted_s(:long) %></td>
+                                 <td><%= bill.units || "N/A" %></td>
+                                 <td><%= bill.amount || "N/A" %></td>
+                                 <td><%= bill.status %></td>
+                              </tr>
+            
+               
+          
+               <%end%>
+           <% end %>
+        </tbody>
+      </table>
     <% else %>
-      <diV class="my-4 d-flex align-items-center justify-content-center">
-        <h5 class="text-muted text-center">No bills generated yet!</h5>
+      <div class="my-4 d-flex align-items-center justify-content-center">
+        <h5 class="text-muted text-center">No Pending Bills</h5>
       </div>
     <% end %>
   </div>
@@ -35,27 +45,31 @@
   </div>
   <div class="card-body">
     <% if @grievances.length > 0 %>
-      <table class="table table-striped table-hover table responsive">
-       <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Problem</th>
-          <th scope="col">Connection</th>
-          <th scope="col">Updated</th>
-          <th scope="col">Status</th>
-        </tr>
-        </thead>
-        <% @grievances.each do |grievance| %>
-         <% if grievance.status != "Resolved" %>
-          <tr onclick="location.href='<%= grievance.status == 'Resolved' ? official_grievance_path(grievance.id) :official_grievance_edit_path(grievance.id) %>';" onmouseover="this.style.cursor='pointer';">
-            <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
-            <td><%= grievance.problem %></td>
-            <td><%= grievance.connection.name %></td>
-            <td><%= grievance.updated_at.strftime("%b %d, %Y") %></td>
-            <td><%= grievance.status %></td>
-          </tr>
-        <% end %>  
-        <% end %>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Problem</th>
+              <th scope="col">Connection</th>
+              <th scope="col">Updated</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @grievances.each do |grievance| %>
+            <%if grievance.status != "Resolved"%>
+              <tr style="cursor: pointer;" onclick="location.href='<%=grievance.status == 'Resolved' ? official_grievance_path(grievance.id) :official_grievance_edit_path(grievance.id) %>';">
+                <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
+                <td><%= grievance.problem %></td>
+                <td><%= grievance.connection.name %></td>
+                <td><%= grievance.updated_at.strftime("%b %d, %Y") %></td>
+                <td><%= grievance.status %></td>
+              </tr>
+              <%end%>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     <% else %>
       <diV class="my-4 d-flex align-items-center justify-content-center">

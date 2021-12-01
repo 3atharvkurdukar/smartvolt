@@ -4,7 +4,7 @@ class OfficialsController < ApplicationController
   layout "official"
 
   def index
-    @bills=Bill.all
-    @grievances=Grievance.where(official_id: Current.official.id)
+    @bills=Bill.where(official_id: Current.official.id,status: "Image Uploaded").order(created_at: :desc)
+    @grievances=Grievance.where(official_id: Current.official.id).order(created_at: :desc)
   end
 end

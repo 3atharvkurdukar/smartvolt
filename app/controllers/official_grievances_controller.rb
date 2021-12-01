@@ -5,7 +5,7 @@ class OfficialGrievancesController < ApplicationController
     layout "official"
   
     def index
-        @grievances=Grievance.where(official_id: Current.official.id)
+        @grievances=Grievance.where(official_id: Current.official.id).order(created_at: :desc)
     end
 
    def show

@@ -34,7 +34,8 @@ Rails.application.routes.draw do
 
   get "/official/bills", to: "official_bills#index", as: "official_bills"
   get "/official/bills/:bill_id", to: "official_bills#show", as: "official_bill"
-  patch "/official/bills/:bill_id", to: "official_bills#update"
+  get "/official/bills/:bill_id/edit",to: "official_bills#edit", as: "official_bill_edit"
+  patch "/official/bills/:bill_id", to: "official_bills#update", as: "official_bill_patch"
 
   get "/official/grievances", to: "official_grievances#index", as: "official_grievances"
   get "/official/grievances/:grievance_id", to: "official_grievances#show", as: "official_grievance"
