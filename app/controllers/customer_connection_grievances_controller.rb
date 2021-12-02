@@ -22,7 +22,7 @@ class CustomerConnectionGrievancesController < ApplicationController
     end
   end
 
-  def show 
+  def show
     connection = Current.customer.connections.find(params[:connection_id])
     @grievance = connection.grievances.find(params[:grievance_id])
   end

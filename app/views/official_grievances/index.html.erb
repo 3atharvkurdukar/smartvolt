@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <% @grievances.each do |grievance| %>
-          <tr onclick="location.href='<%=grievance.status == 'Resolved' ? official_grievance_path(grievance.id) : official_grievance_edit_path(grievance.id) %>';" onmouseover="this.style.cursor='pointer';">
+          <tr onclick="location.href='<%= grievance.status == "Resolved" ? official_grievance_path(grievance.id) : official_grievance_edit_path(grievance.id) %>';" onmouseover="this.style.cursor='pointer';">
             <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
             <td><%= grievance.problem %></td>
             <td><%= grievance.connection.name %></td>

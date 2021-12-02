@@ -35,7 +35,7 @@ class CustomerConnectionsController < ApplicationController
     end
     @last_bill = Bill.where(connection_id: @connection.id).order(created_at: :desc).first
     @show_upload_link = !@last_bill.present? || @last_bill.created_at.to_date <= 1.month.ago.to_date
-  
+
     @bills = Bill.where(connection: params[:connection_id]).order(created_at: :desc)
     @grievances = Grievance.where(connection: params[:connection_id]).order(created_at: :desc)
   end

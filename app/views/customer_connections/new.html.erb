@@ -9,28 +9,28 @@
     
     <div class="form-group">
       <%= form.label :Name %>
-      <%= form.text_field :name, class: "form-control",placeholder: "Name" %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
     </div>
     <div class="form-group">
       <%= form.label :Address %>
       <%= form.text_field :address, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :connection_type ,"Type" %>
-      <%= form.select :connection_type, ["Domestic", "Commercial", "Industrial"], {}, { :class => "form-select" }  %>
+      <%= form.label :connection_type, "Type" %>
+      <%= form.select :connection_type, ["Domestic", "Commercial", "Industrial"], {}, { class: "form-select" } %>
     </div>
     <div class="form-group">
       <%= form.label :Phase %>
-      <%= form.select :phase, [1, 3], {}, { :class => "form-select" }  %>
+      <%= form.select :phase, [1, 3], {}, { class: "form-select" } %>
     </div>
     
     <div class="form-group">
       <%= form.label :Area %>
-      <%= form.select :area, ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5"], {}, { :class => "form-select" }  %>
+      <%= form.select :area, ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5"], {}, { class: "form-select" } %>
     </div>
     <div class="d-flex justify-content-center">
         <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>
-    <% end%>
+    <% end %>
 </div>
 </div>

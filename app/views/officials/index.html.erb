@@ -17,19 +17,16 @@
         </thead>
         <tbody>
           <% @bills.each do |bill| %>
-             <% if bill.status != "Bill Generated" %>
-                             <tr style="cursor: pointer;" onclick="location.href='<%=bill.status == 'Bill Generated' ? official_bill_path(bill.id) : official_bill_edit_path(bill.id) %>';">
-                                 <td><%= bill.connection.name %></td>
-                                 <td><%= bill.created_at.localtime.to_formatted_s(:long) %></td>
-                                 <td><%= bill.units || "N/A" %></td>
-                                 <td><%= bill.amount || "N/A" %></td>
-                                 <td><%= bill.status %></td>
-                              </tr>
-            
-               
-          
-               <%end%>
-           <% end %>
+            <% if bill.status != "Bill Generated" %>
+              <tr style="cursor: pointer;" onclick="location.href='<%= bill.status == "Bill Generated" ? official_bill_path(bill.id) : official_bill_edit_path(bill.id) %>';">
+                <td><%= bill.connection.name %></td>
+                <td><%= bill.created_at.localtime.to_formatted_s(:long) %></td>
+                <td><%= bill.units || "N/A" %></td>
+                <td><%= bill.amount || "N/A" %></td>
+                <td><%= bill.status %></td>
+              </tr>
+            <% end %>
+          <% end %>
         </tbody>
       </table>
     <% else %>
@@ -58,15 +55,15 @@
           </thead>
           <tbody>
             <% @grievances.each do |grievance| %>
-            <%if grievance.status != "Resolved"%>
-              <tr style="cursor: pointer;" onclick="location.href='<%=grievance.status == 'Resolved' ? official_grievance_path(grievance.id) :official_grievance_edit_path(grievance.id) %>';">
+            <% if grievance.status != "Resolved" %>
+              <tr style="cursor: pointer;" onclick="location.href='<%= grievance.status == "Resolved" ? official_grievance_path(grievance.id) : official_grievance_edit_path(grievance.id) %>';">
                 <td><%= grievance.created_at.strftime("%b %d, %Y") %></td>
                 <td><%= grievance.problem %></td>
                 <td><%= grievance.connection.name %></td>
                 <td><%= grievance.updated_at.strftime("%b %d, %Y") %></td>
                 <td><%= grievance.status %></td>
               </tr>
-              <%end%>
+              <% end %>
             <% end %>
           </tbody>
         </table>

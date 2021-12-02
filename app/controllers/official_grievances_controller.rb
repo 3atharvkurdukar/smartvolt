@@ -1,23 +1,17 @@
 class OfficialGrievancesController < ApplicationController
+  before_action :require_official_signed_in
 
-    before_action :require_official_signed_in
+  layout "official"
 
-    layout "official"
-  
-    def index
-        @grievances=Grievance.where(official_id: Current.official.id).order(created_at: :desc)
-    end
+  def index
+    @grievances = Grievance.where(official_id: Current.official.id).order(created_at: :desc)
+  end
 
-   def show
-
-
-    
+  def show
     @grievance = Grievance.find(params[:grievance_id])
+  end
 
-    
-
-   end
-   def edit
+  def edit
     @grievance = Grievance.find(params[:grievance_id])
   end
 
@@ -31,9 +25,9 @@ class OfficialGrievancesController < ApplicationController
     end
   end
 
-   private
-    def grievance_params
-       params.require(:grievance).permit(:problem, :description, :status, :remarks)
-    end
+  private
 
+  def grievance_params
+    params.require(:grievance).permit(:problem, :description, :status, :remarks)
+  end
 end
