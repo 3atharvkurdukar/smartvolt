@@ -4,7 +4,8 @@ class OfficialBillsController < ApplicationController
   layout "official"
 
   def index
-    @bills = Bill.where(official_id: Current.official.id).order(created_at: :desc)
+    @connections = Connection.where(area: Current.official.area )
+    @bills = Bill.where(connection: [@connections]).order(created_at: :desc)
   end
 
   def show
@@ -25,6 +26,7 @@ class OfficialBillsController < ApplicationController
       end
       if @bill.update(amount: amount)
         @bill.update(status: "Bill Generated")
+        @bill.official = Current.official
       end
       redirect_to official_bill_path(@bill.id)
     else

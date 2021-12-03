@@ -4,7 +4,8 @@ class OfficialsController < ApplicationController
   layout "official"
 
   def index
-    @bills = Bill.where(official_id: Current.official.id, status: "Image Uploaded").order(created_at: :desc)
-    @grievances = Grievance.where(official_id: Current.official.id).order(created_at: :desc)
+    @connections = Connection.where(area: Current.official.area )
+    @bills = Bill.where(connection: [@connections], status: "Image Uploaded").order(created_at: :desc)
+    @grievances = Grievance.where(connection: [@connections],status:["Pending", "Work in Progress"]).order(created_at: :desc)
   end
 end

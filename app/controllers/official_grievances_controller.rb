@@ -4,7 +4,8 @@ class OfficialGrievancesController < ApplicationController
   layout "official"
 
   def index
-    @grievances = Grievance.where(official_id: Current.official.id).order(created_at: :desc)
+    @connections = Connection.where(area: Current.official.area )
+    @grievances = Grievance.where(connection: [@connections]).order(created_at: :desc)
   end
 
   def show
@@ -19,6 +20,7 @@ class OfficialGrievancesController < ApplicationController
     @grievance = Grievance.find(params[:grievance_id])
 
     if @grievance.update(grievance_params)
+      @grievance.official = Current.official
       redirect_to official_dashboard_path
     else
       render :edit
