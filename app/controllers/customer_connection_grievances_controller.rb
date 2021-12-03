@@ -11,7 +11,7 @@ class CustomerConnectionGrievancesController < ApplicationController
     @grievance = connection.grievances.create(grievance_params)
     official = Official.find_by(area: connection.area)
     if !official.present?
-      redirect_to customer_connection_path(connection.id), flash: { danger: "No official has been allotted to the area yet. Please try again later" }
+      redirect_to customer_connection_path(connection.id), flash: { danger: "No official has been allotted to the area yet. Please try again later." }
     end
     @grievance.official = official
     @grievance.status = "Pending"

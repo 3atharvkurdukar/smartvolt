@@ -11,6 +11,9 @@ class CustomerConnectionsController < ApplicationController
 
   def create
     @connection = Current.customer.connections.create(connection_params)
+    if !Official.find_by(area: @connection.area).present?
+      redirect_to customer_dashboard_path, flash: { danger: "No official has been allotted to the area yet. Please try again later. " }
+    end
     if @connection.connection_type == "Domestic"
       @connection.rate = 5
     end

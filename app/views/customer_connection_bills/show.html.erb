@@ -44,10 +44,8 @@
     </div>
   </div>
 </div>
-<div class="card-header">
-  <div class="d-flex justify-content-center">
-    <input type="button" onclick="printDiv()" value="Print Bill" class="btn btn-primary" />
-  </div>
+<div class="d-flex justify-content-center my-4">
+  <input type="button" onclick="printDiv()" value="Print Bill" class="btn btn-lg btn-primary" />
 </div>
 <script>
 function printDiv() {
@@ -63,6 +61,5 @@ function printDiv() {
     a.document.write('</body></html>');
     a.document.close();
     a.print();
-    a.window.close();
 }
 </script>
