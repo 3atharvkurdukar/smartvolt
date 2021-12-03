@@ -4,8 +4,12 @@ class OfficialGrievancesController < ApplicationController
   layout "official"
 
   def index
-    @connections = Connection.where(area: Current.official.area )
-    @grievances = Grievance.where(connection: [@connections]).order(created_at: :desc)
+    @connections = Connection.where(area: Current.official.area)
+    if params[:area]
+      @grievances = Grievance.joins(:connection).where(connection: { area: params[:area] }).order(created_at: :desc)
+    else
+      @grievances = Grievance.order(created_at: :desc)
+    end
   end
 
   def show
