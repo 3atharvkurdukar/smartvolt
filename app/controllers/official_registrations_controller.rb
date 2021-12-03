@@ -18,6 +18,6 @@ class OfficialRegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:official).permit(:name, :area, :username, :password, :password_confirmation)
+    params.require(:official).permit(:employee_id, :name, :area, :username, :password, :password_confirmation)
   end
 end
